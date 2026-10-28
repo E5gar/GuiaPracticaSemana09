@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reserva tu mesa | Mesa Mantaro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif&display=swap">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="barra">
+    <a class="logo" href="index.html" aria-label="Mesa Mantaro, inicio">M/m</a>
+    <nav class="navegacion" aria-label="Principal">
+      <a class="pildora" href="#menu">Menú</a>
+      <a class="pildora" href="#reservar">Reservar</a>
+      <a class="pildora" href="#horarios">Horarios</a>
+      <a class="pildora" href="#contacto">Contacto</a>
+    </nav>
+    <div class="acciones">
+      <a class="pildora" href="tel:+51964000000"><i data-lucide="phone"></i>Llamar</a>
+      <a class="pildora pildora-naranja" href="#reservar">Reservar</a>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <section class="encabezado">
+      <h1 class="titulo-grande">Reserva tu mesa</h1>
+      <p class="lead">Cocina andina de temporada en el corazón del valle del Mantaro. Completa el formulario y recibe tu código de reserva al instante.</p>
+    </section>
+
+    <section class="mosaico">
+      <article class="tarjeta tarjeta-gris col-7" id="reservar">
+        <h2 class="tarjeta-titulo">Datos de la reserva</h2>
+
+        <form class="formulario" action="procesar.php" method="post">
+          <div class="campo campo-completo">
+            <label for="nombre"><i data-lucide="user"></i>Nombre completo</label>
+            <input class="entrada" type="text" id="nombre" name="nombre" required minlength="3" maxlength="80" autocomplete="name" placeholder="Nombres y apellidos">
+          </div>
+
+          <div class="campo">
+            <label for="correo"><i data-lucide="mail"></i>Correo electrónico</label>
+            <input class="entrada" type="email" id="correo" name="correo" required autocomplete="email" placeholder="nombre@correo.com">
+          </div>
+
+          <div class="campo">
+            <label for="telefono"><i data-lucide="phone"></i>Teléfono</label>
+            <input class="entrada" type="tel" id="telefono" name="telefono" required pattern="\+?[0-9 ]{9,15}" autocomplete="tel" placeholder="964 000 000">
+          </div>
+
+          <div class="campo">
+            <label for="fecha"><i data-lucide="calendar"></i>Fecha</label>
+            <input class="entrada" type="date" id="fecha" name="fecha" required>
+          </div>
+
+          <div class="campo">
+            <label for="hora"><i data-lucide="clock"></i>Hora</label>
+            <select class="entrada" id="hora" name="hora" required>
+              <option value="" selected disabled>Elige una hora</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+              <option value="21:30">21:30</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="personas"><i data-lucide="users"></i>Personas</label>
+            <input class="entrada" type="number" id="personas" name="personas" required min="1" max="12" value="2">
+          </div>
+
+          <div class="campo">
+            <label for="zona"><i data-lucide="armchair"></i>Zona</label>
+            <select class="entrada" id="zona" name="zona" required>
+              <option value="salon" selected>Salón principal</option>
+              <option value="terraza">Terraza</option>
+              <option value="barra">Barra</option>
+              <option value="privada">Sala privada</option>
+            </select>
+          </div>
+
+          <div class="campo campo-completo">
+            <label for="ocasion"><i data-lucide="party-popper"></i>Ocasión</label>
+            <select class="entrada" id="ocasion" name="ocasion">
+              <option value="ninguna" selected>Ninguna</option>
+              <option value="cumpleanos">Cumpleaños</option>
+              <option value="aniversario">Aniversario</option>
+              <option value="familiar">Reunión familiar</option>
+              <option value="negocios">Reunión de negocios</option>
+            </select>
+          </div>
+
+          <div class="campo campo-completo">
+            <label for="notas"><i data-lucide="message-square"></i>Notas para el restaurante</label>
+            <textarea class="entrada" id="notas" name="notas" maxlength="200" placeholder="Alergias, silla para bebé, decoración..."></textarea>
+          </div>
+
+          <div class="campo campo-completo">
+            <button class="boton" type="submit"><i data-lucide="calendar-check"></i>Confirmar reserva</button>
+          </div>
+        </form>
+      </article>
+
+      <div class="columna-lateral col-5">
+        <article class="tarjeta tarjeta-imagen" id="menu">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=80" alt="lorem ipsum" loading="lazy">
+          <div class="tarjeta-contenido">
+            <h2 class="tarjeta-titulo">Cocina andina de temporada</h2>
+            <p>Trucha, cuy confitado y papa nativa del valle del Mantaro.</p>
+          </div>
+        </article>
+
+        <article class="tarjeta tarjeta-naranja tarjeta-compacta" id="horarios">
+          <i data-lucide="clock" class="icono-grande"></i>
+          <div>
+            <h2 class="tarjeta-titulo">Horarios</h2>
+            <p>Todos los días de 12:00 a 22:00. Última reserva a las 21:30.</p>
+          </div>
+        </article>
+
+        <article class="tarjeta tarjeta-azul tarjeta-compacta">
+          <i data-lucide="users" class="icono-grande"></i>
+          <div>
+            <h2 class="tarjeta-titulo">Grupos</h2>
+            <p>Hasta 12 personas por reserva. Para más, llámanos.</p>
+          </div>
+        </article>
+
+        <article class="tarjeta tarjeta-negra tarjeta-compacta">
+          <div class="titulo-con-icono">
+            <h2 class="tarjeta-titulo">Tus datos</h2>
+            <i data-lucide="lock" class="icono-grande"></i>
+          </div>
+          <p>Solo los usamos para confirmar tu reserva.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="contenedor pie" id="contacto">
+    <span class="pildora"><i data-lucide="map-pin"></i>Av. Real 123, Huancayo</span>
+    <a class="pildora" href="tel:+51964000000"><i data-lucide="phone"></i>964 000 000</a>
+    <a class="pildora" href="mailto:reservas@mesamantaro.pe"><i data-lucide="mail"></i>reservas@mesamantaro.pe</a>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script>
+    lucide.createIcons();
+
+    const campoFecha = document.getElementById('fecha');
+    const hoy = new Date();
+    const limite = new Date(hoy);
+    limite.setDate(limite.getDate() + 60);
+
+    const aIso = (fecha) =>
+      new Date(fecha.getTime() - fecha.getTimezoneOffset() * 60000)
+        .toISOString()
+        .slice(0, 10);
+
+    campoFecha.min = aIso(hoy);
+    campoFecha.max = aIso(limite);
+  </script>
+</body>
+</html>
