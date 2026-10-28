@@ -1,0 +1,66 @@
+<%@ page import="java.security.SecureRandom, java.time.LocalDate, java.time.ZoneId, java.util.Collections, java.util.LinkedHashMap, java.util.List, java.util.Map, java.util.regex.Pattern" %>
+<%!
+    private static final int MAX_PERSONAS = 12;
+    private static final int MAX_DIAS = 60;
+    private static final ZoneId ZONA_HORARIA = ZoneId.of("America/Lima");
+    private static final SecureRandom ALEATORIO = new SecureRandom();
+
+    private static final Pattern PATRON_NOMBRE = Pattern.compile("^\\p{L}[\\p{L} .'-]*$");
+    private static final Pattern PATRON_CORREO = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+    private static final Pattern PATRON_TELEFONO = Pattern.compile("^\\+?[0-9 ]{9,15}$");
+
+    private static final List<String> HORAS = List.of(
+        "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30",
+        "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30",
+        "20:00", "20:30", "21:00", "21:30"
+    );
+
+    private static final Map<String, String> ZONAS;
+    private static final Map<String, String> OCASIONES;
+
+    static {
+        Map<String, String> zonas = new LinkedHashMap<>();
+        zonas.put("salon", "Salón principal");
+        zonas.put("terraza", "Terraza");
+        zonas.put("barra", "Barra");
+        zonas.put("privada", "Sala privada");
+        ZONAS = Collections.unmodifiableMap(zonas);
+
+        Map<String, String> ocasiones = new LinkedHashMap<>();
+        ocasiones.put("ninguna", "Ninguna");
+        ocasiones.put("cumpleanos", "Cumpleaños");
+        ocasiones.put("aniversario", "Aniversario");
+        ocasiones.put("familiar", "Reunión familiar");
+        ocasiones.put("negocios", "Reunión de negocios");
+        OCASIONES = Collections.unmodifiableMap(ocasiones);
+    }
+
+    private static String limpiar(String valor) {
+        return valor == null ? "" : valor.strip();
+    }
+
+    private static String generarCodigo() {
+        return String.format("MM-%06X", ALEATORIO.nextInt(0x1000000));
+    }
+
+    private static String formatearFecha(LocalDate fecha) {
+        String[] dias = {"domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"};
+        String[] meses = {
+            "enero", "febrero", "marzo", "abril", "mayo", "junio",
+            "julio", "agosto", "setiembre", "octubre", "noviembre", "diciembre"
+        };
+        return dias[fecha.getDayOfWeek().getValue() % 7]
+            + " " + fecha.getDayOfMonth()
+            + " de " + meses[fecha.getMonthValue() - 1]
+            + " de " + fecha.getYear();
+    }
+%>
+<%
+    LocalDate hoyConfig = LocalDate.now(ZONA_HORARIA);
+    pageContext.setAttribute("horas", HORAS);
+    pageContext.setAttribute("zonas", ZONAS);
+    pageContext.setAttribute("ocasiones", OCASIONES);
+    pageContext.setAttribute("maxPersonas", MAX_PERSONAS);
+    pageContext.setAttribute("fechaMin", hoyConfig.toString());
+    pageContext.setAttribute("fechaMax", hoyConfig.plusDays(MAX_DIAS).toString());
+%>

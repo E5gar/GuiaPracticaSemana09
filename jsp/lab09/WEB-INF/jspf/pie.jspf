@@ -1,0 +1,12 @@
+  <footer class="contenedor pie" id="contacto">
+    <span class="pildora"><i data-lucide="map-pin"></i>Av. Real 123, Huancayo</span>
+    <a class="pildora" href="tel:+51964000000"><i data-lucide="phone"></i>964 000 000</a>
+    <a class="pildora" href="mailto:reservas@mesamantaro.pe"><i data-lucide="mail"></i>reservas@mesamantaro.pe</a>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

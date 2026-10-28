@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><c:out value="${titulo}" /> | Mesa Mantaro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif&display=swap">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="barra">
+    <a class="logo" href="index.jsp" aria-label="Mesa Mantaro, inicio">M/m</a>
+    <nav class="navegacion" aria-label="Principal">
+      <a class="pildora" href="index.jsp#menu">Menú</a>
+      <a class="pildora" href="index.jsp#reservar">Reservar</a>
+      <a class="pildora" href="index.jsp#horarios">Horarios</a>
+      <a class="pildora" href="index.jsp#contacto">Contacto</a>
+    </nav>
+    <div class="acciones">
+      <a class="pildora" href="tel:+51964000000"><i data-lucide="phone"></i>Llamar</a>
+      <a class="pildora pildora-naranja" href="index.jsp#reservar">Reservar</a>
+    </div>
+  </header>
